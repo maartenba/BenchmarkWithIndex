@@ -1,14 +1,14 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
-using BenchmarkWithIndex.WithIndexAsStruct;
 using Microsoft.Toolkit.HighPerformance.Extensions;
 
 namespace BenchmarkWithIndex
 {
     class Program
     {
-        static void Main(string[] args) => BenchmarkRunner.Run(typeof(Program).Assembly);
+        static void Main() => BenchmarkRunner.Run(typeof(Program).Assembly);
     }
     
     [MemoryDiagnoser]
@@ -28,6 +28,7 @@ namespace BenchmarkWithIndex
         };
 
         [MethodImpl(MethodImplOptions.NoInlining)]
+        [SuppressMessage("ReSharper", "UnusedParameter.Local")]
         private void FakeConsoleWriteLine(int index, string value)
         {
             // noop
@@ -46,7 +47,7 @@ namespace BenchmarkWithIndex
         [Benchmark]
         public void WithIndexAsStruct()
         {
-            foreach (var (index, value) in ListExtensions.WithIndex(_school))
+            foreach (var (index, value) in BenchmarkWithIndex.WithIndexAsStruct.ListExtensions.WithIndex(_school))
             {
                 FakeConsoleWriteLine(index, value);
             }
@@ -74,6 +75,15 @@ namespace BenchmarkWithIndex
         public void WithValueTupleAndEnumerator()
         {
             foreach (var (index, value) in BenchmarkWithIndex.WithValueTupleAndEnumerator.ListExtensions.WithIndex(_school))
+            {
+                FakeConsoleWriteLine(index, value);
+            }
+        }
+        
+        [Benchmark]
+        public void WithCustomArrayEnumerator()
+        {
+            foreach (var (index, value) in BenchmarkWithIndex.WithCustomArrayEnumerator.ListExtensions.WithIndex(_school))
             {
                 FakeConsoleWriteLine(index, value);
             }

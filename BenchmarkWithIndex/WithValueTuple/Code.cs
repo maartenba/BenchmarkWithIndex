@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using BenchmarkWithIndex.WithIndexAsStruct;
 
 namespace BenchmarkWithIndex.WithValueTuple
 {

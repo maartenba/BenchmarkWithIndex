@@ -21,12 +21,13 @@ Intel Core i7-7700HQ CPU 2.80GHz (Kaby Lake), 1 CPU, 8 logical and 4 physical co
 
 |                      Method |       Mean |    Error |   StdDev | Ratio | RatioSD |  Gen 0 | Gen 1 | Gen 2 | Allocated |
 |---------------------------- |-----------:|---------:|---------:|------:|--------:|-------:|------:|------:|----------:|
-|                    Original | 1,267.6 ns | 32.15 ns | 94.29 ns |  1.00 |    0.00 | 0.4845 |     - |     - |    1520 B |
-|           WithIndexAsStruct |   974.7 ns | 19.38 ns | 44.13 ns |  0.76 |    0.07 | 0.0381 |     - |     - |     120 B |
-|              WithValueTuple |   973.9 ns | 19.09 ns | 36.77 ns |  0.75 |    0.07 | 0.0381 |     - |     - |     120 B |
-|    WithValueTupleAndForEach |   799.6 ns | 15.64 ns | 15.36 ns |  0.65 |    0.04 | 0.0324 |     - |     - |     104 B |
-| WithValueTupleAndEnumerator |   829.4 ns | 16.38 ns | 26.45 ns |  0.64 |    0.06 | 0.0324 |     - |     - |     104 B |
-|           MicrosoftHighPerf |   411.6 ns |  8.12 ns | 17.14 ns |  0.32 |    0.03 |      - |     - |     - |         - |
+|                    Original | 1,307.6 ns | 27.06 ns | 78.94 ns |  1.00 |    0.00 | 0.4845 |     - |     - |    1520 B |
+|           WithIndexAsStruct |   922.5 ns | 18.42 ns | 23.30 ns |  0.70 |    0.05 | 0.0381 |     - |     - |     120 B |
+|              WithValueTuple |   964.2 ns | 19.25 ns | 38.89 ns |  0.74 |    0.05 | 0.0381 |     - |     - |     120 B |
+|    WithValueTupleAndForEach |   846.3 ns | 16.77 ns | 36.81 ns |  0.64 |    0.05 | 0.0324 |     - |     - |     104 B |
+| WithValueTupleAndEnumerator |   864.3 ns | 19.42 ns | 57.25 ns |  0.66 |    0.06 | 0.0324 |     - |     - |     104 B |
+|   WithCustomArrayEnumerator |   477.5 ns |  9.51 ns | 21.86 ns |  0.36 |    0.03 | 0.0176 |     - |     - |      56 B |
+|           MicrosoftHighPerf |   409.3 ns |  7.85 ns |  8.07 ns |  0.32 |    0.03 |      - |     - |     - |         - |
 ```
 
 ## Different versions
@@ -56,6 +57,12 @@ allocations happening.
 
 Version of `WithValueTuple`, where instead of using compiler and
 runtime magic, we'll use the enumerator directly.
+
+### `WithCustomArrayEnumerator`
+
+This version returns an enumerable of ValueTuple structs.
+However, when the original is an array, we return a custom, lightweight `IndexedArrayEnumerable{T}`"/>`.
+This bypasses the compiler-generated `IEnumerable` that is slightly heavier.
         
 ### `MicrosoftHighPerf`
 
