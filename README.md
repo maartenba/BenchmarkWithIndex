@@ -7,7 +7,7 @@ Can we optimize https://twitter.com/buhakmeh/status/1291029712458911752 ? That i
 Rules:
 * Create a PR that adds your implementation/benchmark.
 * Add documentation comments to your `WithIndex` method, explaining why it may (or may not) be faster.
-* The `WithIndex` method *must* use `this IEnumerable<T> enumerable` as a parameter (so no optimization by using an array, for example).
+* The `WithIndex` method *must* use `this IEnumerable<T> enumerable` as a parameter (so no optimization by using an array, for example - the `MicrosoftHighPerf` being the exception here).
 
 ## Current results
 
@@ -19,14 +19,14 @@ Intel Core i7-7700HQ CPU 2.80GHz (Kaby Lake), 1 CPU, 8 logical and 4 physical co
   DefaultJob : .NET Core 3.1.6 (CoreCLR 4.700.20.26901, CoreFX 4.700.20.31603), X64 RyuJIT
 
 
-|                      Method |     Mean |     Error |    StdDev | Ratio | RatioSD | Gen 0 | Gen 1 | Gen 2 | Allocated |
-|---------------------------- |---------:|----------:|----------:|------:|--------:|------:|------:|------:|----------:|
-|                    Original | 9.254 ms | 0.1839 ms | 0.5126 ms |  1.00 |    0.00 |     - |     - |     - |   5.43 KB |
-|           WithIndexAsStruct | 9.706 ms | 0.1894 ms | 0.2395 ms |  1.07 |    0.06 |     - |     - |     - |   4.06 KB |
-|              WithValueTuple | 9.239 ms | 0.1807 ms | 0.3165 ms |  1.00 |    0.07 |     - |     - |     - |   4.06 KB |
-|    WithValueTupleAndForEach | 9.736 ms | 0.1923 ms | 0.2936 ms |  1.06 |    0.06 |     - |     - |     - |   4.05 KB |
-| WithValueTupleAndEnumerator | 9.742 ms | 0.1938 ms | 0.3073 ms |  1.06 |    0.07 |     - |     - |     - |   4.05 KB |
-|           MicrosoftHighPerf | 9.178 ms | 0.1802 ms | 0.3156 ms |  1.00 |    0.08 |     - |     - |     - |   3.95 KB |
+|                      Method |       Mean |    Error |   StdDev |     Median | Ratio | RatioSD |  Gen 0 | Gen 1 | Gen 2 | Allocated |
+|---------------------------- |-----------:|---------:|---------:|-----------:|------:|--------:|-------:|------:|------:|----------:|
+|                    Original | 1,275.7 ns | 25.42 ns | 59.41 ns | 1,260.7 ns |  1.00 |    0.00 | 0.4845 |     - |     - |    1520 B |
+|           WithIndexAsStruct |   946.7 ns | 18.80 ns | 53.95 ns |   936.4 ns |  0.75 |    0.04 | 0.0381 |     - |     - |     120 B |
+|              WithValueTuple |   878.5 ns | 17.71 ns | 51.94 ns |   867.7 ns |  0.69 |    0.06 | 0.0381 |     - |     - |     120 B |
+|    WithValueTupleAndForEach |   794.7 ns | 15.76 ns | 29.99 ns |   782.7 ns |  0.62 |    0.03 | 0.0324 |     - |     - |     104 B |
+| WithValueTupleAndEnumerator |   845.9 ns | 15.79 ns | 30.80 ns |   840.0 ns |  0.66 |    0.04 | 0.0324 |     - |     - |     104 B |
+|           MicrosoftHighPerf |   289.7 ns |  5.48 ns | 10.42 ns |   286.9 ns |  0.23 |    0.01 |      - |     - |     - |         - |
 ```
 
 ## Different versions
