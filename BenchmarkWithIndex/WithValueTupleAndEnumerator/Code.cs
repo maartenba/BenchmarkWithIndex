@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 
-namespace BenchmarkWithIndex.WithValueTupleAndMoveNext
+namespace BenchmarkWithIndex.WithValueTupleAndEnumerator
 {
     public static class ListExtensions
     {
+        /// <summary>
+        /// Version of <see cref="WithValueTupleAndForEach.ListExtensions.WithIndex{T}"/>, where instead of
+        /// using compiler and runtime magic, we'll use the enumerator directly.
+        /// </summary>
         public static IEnumerable<(int Index, T Value)> WithIndex<T>(this IEnumerable<T> enumerable)
         {
             var index = 0;

@@ -65,18 +65,9 @@ namespace BenchmarkWithIndex
         }
         
         [Benchmark]
-        public void WithValueTupleAndMoveNext()
+        public void WithValueTupleAndEnumerator()
         {
-            foreach (var (index, value) in BenchmarkWithIndex.WithValueTupleAndMoveNext.ListExtensions.WithIndex(_school))
-            {
-                Console.WriteLine($"Item at {index} is {value}.");
-            }
-        }
-        
-        [Benchmark]
-        public void WithValueTupleAndCustomEnumerator()
-        {
-            foreach (var (index, value) in BenchmarkWithIndex.WithValueTupleAndCustomEnumerator.ListExtensions.WithIndex(_school))
+            foreach (var (index, value) in BenchmarkWithIndex.WithValueTupleAndEnumerator.ListExtensions.WithIndex(_school))
             {
                 Console.WriteLine($"Item at {index} is {value}.");
             }

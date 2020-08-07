@@ -14,6 +14,9 @@ namespace BenchmarkWithIndex.Original
 
     public static class ListExtensions
     {
+        /// <summary>
+        /// The original implementation from https://twitter.com/buhakmeh/status/1291029712458911752.
+        /// </summary>
         public static IEnumerable<WithIndex<T>> WithIndex<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.Select((item, index) => new WithIndex<T>
