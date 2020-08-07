@@ -56,7 +56,7 @@ namespace BenchmarkWithIndex
         }
         
         [Benchmark]
-        public void WithValueTupleAndForLoop()
+        public void WithValueTupleAndForEach()
         {
             foreach (var (index, value) in BenchmarkWithIndex.WithValueTupleAndForEach.ListExtensions.WithIndex(_school))
             {
