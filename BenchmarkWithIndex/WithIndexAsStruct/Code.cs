@@ -8,7 +8,7 @@ namespace BenchmarkWithIndex.WithIndexAsStruct
         public T Value;
         public int Index;
 
-        public void Deconstruct(out T value, out int index)
+        public void Deconstruct(out int index, out T value)
             => (index, value) = (Index, Value);
     }
 

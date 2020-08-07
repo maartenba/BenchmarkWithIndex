@@ -1,4 +1,5 @@
-﻿using BenchmarkDotNet.Attributes;
+﻿using System.Runtime.CompilerServices;
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using BenchmarkWithIndex.WithIndexAsStruct;
 using Microsoft.Toolkit.HighPerformance.Extensions;
@@ -25,13 +26,20 @@ namespace BenchmarkWithIndex
             "sturgeon", "cod", "carp", "bass", "eel", "piranha",
             "catfish", "dogfish", "fishsticks", "cannedfish", "crab"
         };
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private void FakeConsoleWriteLine(int index, string value)
+        {
+            // noop
+            // https://twitter.com/SergioPedri/status/1291667443245625344
+        }
         
         [Benchmark(Baseline = true)]
         public void Original()
         {
             foreach (var (index, value) in BenchmarkWithIndex.Original.ListExtensions.WithIndex(_school))
             {
-                // noop
+                FakeConsoleWriteLine(index, value);
             }
         }
         
@@ -40,7 +48,7 @@ namespace BenchmarkWithIndex
         {
             foreach (var (index, value) in ListExtensions.WithIndex(_school))
             {
-                // noop
+                FakeConsoleWriteLine(index, value);
             }
         }
         
@@ -49,7 +57,7 @@ namespace BenchmarkWithIndex
         {
             foreach (var (index, value) in BenchmarkWithIndex.WithValueTuple.ListExtensions.WithIndex(_school))
             {
-                // noop
+                FakeConsoleWriteLine(index, value);
             }
         }
         
@@ -58,7 +66,7 @@ namespace BenchmarkWithIndex
         {
             foreach (var (index, value) in BenchmarkWithIndex.WithValueTupleAndForEach.ListExtensions.WithIndex(_school))
             {
-                // noop
+                FakeConsoleWriteLine(index, value);
             }
         }
         
@@ -67,7 +75,7 @@ namespace BenchmarkWithIndex
         {
             foreach (var (index, value) in BenchmarkWithIndex.WithValueTupleAndEnumerator.ListExtensions.WithIndex(_school))
             {
-                // noop
+                FakeConsoleWriteLine(index, value);
             }
         }
         
@@ -76,7 +84,7 @@ namespace BenchmarkWithIndex
         {
             foreach (var item in ArrayExtensions.Enumerate(_school))
             {
-                // noop
+                FakeConsoleWriteLine(item.Index, item.Value);
             }
         }
     }
