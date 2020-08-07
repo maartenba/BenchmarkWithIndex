@@ -27,24 +27,24 @@ namespace BenchmarkWithIndex.WithCustomArrayEnumerator
 
             public IndexedArrayEnumerator(T[] inner)
             {
-                _index = 0;
+                _index = -1;
                 _array = inner;
             }
 
             public bool MoveNext()
             {
-                _index++;
+                ++_index;
                 return _index < _array.Length;
             }
 
             public void Reset()
             {
-                _index = 0;
+                _index = -1;
             }
 
             public (int Index, T Value) Current => (_index, _array[_index]);
 
-            object IEnumerator.Current => Current;
+            object IEnumerator.Current => (_index, _array[_index]);
 
             public void Dispose()
             {

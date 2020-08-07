@@ -21,13 +21,13 @@ Intel Core i7-7700HQ CPU 2.80GHz (Kaby Lake), 1 CPU, 8 logical and 4 physical co
 
 |                      Method |       Mean |    Error |   StdDev | Ratio | RatioSD |  Gen 0 | Gen 1 | Gen 2 | Allocated |
 |---------------------------- |-----------:|---------:|---------:|------:|--------:|-------:|------:|------:|----------:|
-|                    Original | 1,307.6 ns | 27.06 ns | 78.94 ns |  1.00 |    0.00 | 0.4845 |     - |     - |    1520 B |
-|           WithIndexAsStruct |   922.5 ns | 18.42 ns | 23.30 ns |  0.70 |    0.05 | 0.0381 |     - |     - |     120 B |
-|              WithValueTuple |   964.2 ns | 19.25 ns | 38.89 ns |  0.74 |    0.05 | 0.0381 |     - |     - |     120 B |
-|    WithValueTupleAndForEach |   846.3 ns | 16.77 ns | 36.81 ns |  0.64 |    0.05 | 0.0324 |     - |     - |     104 B |
-| WithValueTupleAndEnumerator |   864.3 ns | 19.42 ns | 57.25 ns |  0.66 |    0.06 | 0.0324 |     - |     - |     104 B |
-|   WithCustomArrayEnumerator |   477.5 ns |  9.51 ns | 21.86 ns |  0.36 |    0.03 | 0.0176 |     - |     - |      56 B |
-|           MicrosoftHighPerf |   409.3 ns |  7.85 ns |  8.07 ns |  0.32 |    0.03 |      - |     - |     - |         - |
+|                    Original | 1,215.7 ns | 28.18 ns | 80.41 ns |  1.00 |    0.00 | 0.4845 |     - |     - |    1520 B |
+|           WithIndexAsStruct |   902.0 ns | 16.23 ns | 24.78 ns |  0.76 |    0.04 | 0.0381 |     - |     - |     120 B |
+|              WithValueTuple |   944.6 ns | 18.50 ns | 30.39 ns |  0.80 |    0.05 | 0.0381 |     - |     - |     120 B |
+|    WithValueTupleAndForEach |   882.9 ns | 18.06 ns | 52.40 ns |  0.73 |    0.06 | 0.0324 |     - |     - |     104 B |
+| WithValueTupleAndEnumerator |   887.6 ns | 17.38 ns | 32.22 ns |  0.75 |    0.05 | 0.0324 |     - |     - |     104 B |
+|   WithCustomArrayEnumerator |   477.4 ns |  9.38 ns |  9.63 ns |  0.41 |    0.02 | 0.0176 |     - |     - |      56 B |
+|           MicrosoftHighPerf |   420.0 ns |  5.96 ns |  5.28 ns |  0.36 |    0.01 |      - |     - |     - |         - |
 ```
 
 ## Different versions
