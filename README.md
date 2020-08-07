@@ -61,7 +61,7 @@ runtime magic, we'll use the enumerator directly.
 ### `WithCustomArrayEnumerator`
 
 This version returns an enumerable of ValueTuple structs.
-However, when the original is an array, we return a custom, lightweight `IndexedArrayEnumerable{T}`"/>`.
+However, when the original is an array, we return a custom, lightweight `IndexedArrayEnumerable{T}`.
 This bypasses the compiler-generated `IEnumerable` that is slightly heavier.
         
 ### `MicrosoftHighPerf`
