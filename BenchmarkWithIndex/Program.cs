@@ -25,6 +25,11 @@ namespace BenchmarkWithIndex
             "shark", "salmon", "minnow", "tuna", "albacore", "stingray",
             "swordfish", "barracuda", "snapper", "marlin", "trout",
             "sturgeon", "cod", "carp", "bass", "eel", "piranha",
+            "catfish", "dogfish", "fishsticks", "cannedfish", "crab",
+            
+            "shark", "salmon", "minnow", "tuna", "albacore", "stingray",
+            "swordfish", "barracuda", "snapper", "marlin", "trout",
+            "sturgeon", "cod", "carp", "bass", "eel", "piranha",
             "catfish", "dogfish", "fishsticks", "cannedfish", "crab"
         };
         

@@ -17,16 +17,17 @@ Intel Core i7-7700HQ CPU 2.80GHz (Kaby Lake), 1 CPU, 8 logical and 4 physical co
 .NET Core SDK=3.1.302
   [Host]     : .NET Core 3.1.6 (CoreCLR 4.700.20.26901, CoreFX 4.700.20.31603), X64 RyuJIT
   DefaultJob : .NET Core 3.1.6 (CoreCLR 4.700.20.26901, CoreFX 4.700.20.31603), X64 RyuJIT
-```
+
 
 |                      Method |     Mean |     Error |    StdDev | Ratio | RatioSD | Gen 0 | Gen 1 | Gen 2 | Allocated |
 |---------------------------- |---------:|----------:|----------:|------:|--------:|------:|------:|------:|----------:|
-|                    Original | 4.715 ms | 0.1782 ms | 0.5083 ms |  1.00 |    0.00 |     - |     - |     - |   2.77 KB |
-|           WithIndexAsStruct | 4.725 ms | 0.1113 ms | 0.3211 ms |  1.01 |    0.12 |     - |     - |     - |   2.09 KB |
-|              WithValueTuple | 4.923 ms | 0.1476 ms | 0.4353 ms |  1.06 |    0.17 |     - |     - |     - |   2.09 KB |
-|    WithValueTupleAndForEach | 5.136 ms | 0.1835 ms | 0.5323 ms |  1.10 |    0.16 |     - |     - |     - |   2.07 KB |
-| WithValueTupleAndEnumerator | 5.255 ms | 0.1612 ms | 0.4626 ms |  1.13 |    0.15 |     - |     - |     - |   2.07 KB |
-|           MicrosoftHighPerf | 5.133 ms | 0.1421 ms | 0.4146 ms |  1.10 |    0.14 |     - |     - |     - |   1.97 KB |
+|                    Original | 9.254 ms | 0.1839 ms | 0.5126 ms |  1.00 |    0.00 |     - |     - |     - |   5.43 KB |
+|           WithIndexAsStruct | 9.706 ms | 0.1894 ms | 0.2395 ms |  1.07 |    0.06 |     - |     - |     - |   4.06 KB |
+|              WithValueTuple | 9.239 ms | 0.1807 ms | 0.3165 ms |  1.00 |    0.07 |     - |     - |     - |   4.06 KB |
+|    WithValueTupleAndForEach | 9.736 ms | 0.1923 ms | 0.2936 ms |  1.06 |    0.06 |     - |     - |     - |   4.05 KB |
+| WithValueTupleAndEnumerator | 9.742 ms | 0.1938 ms | 0.3073 ms |  1.06 |    0.07 |     - |     - |     - |   4.05 KB |
+|           MicrosoftHighPerf | 9.178 ms | 0.1802 ms | 0.3156 ms |  1.00 |    0.08 |     - |     - |     - |   3.95 KB |
+```
 
 ## Different versions
 
